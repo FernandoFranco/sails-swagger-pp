@@ -25,6 +25,14 @@ module.exports.swagger = {
   pkg: require('../package'),
   ui: {
     url: 'http://swagger.balderdash.io'
+  },
+  // Optional - Override swagger doc attributes
+  doc: {
+    basePath: '/api',
+    host: 'http://localhost',
+    info: {
+      title: 'My API'
+    }
   }
 };
 ```
