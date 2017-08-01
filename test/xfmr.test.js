@@ -20,7 +20,7 @@ describe('xfmr', () => {
             let info = xfmr.getInfo(pkg)
 
             assert(_.isObject(info))
-            assert.equal(info.title, 'sails-swagger')
+            assert.equal(info.title, 'sails-swagger-pp')
             assert(_.isObject(info.contact))
             assert(_.isString(info.version))
         })
@@ -32,7 +32,6 @@ describe('xfmr', () => {
         })
         it('should transform routes to paths', () => {
             let paths = xfmr.getPaths(sails)
-
             assert(paths)
         })
     })

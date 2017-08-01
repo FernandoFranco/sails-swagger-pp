@@ -42,6 +42,6 @@
   },
   "sails": {
     "isHook": true,
-    "hookName": "swagger"
+    "hookName": "swagger-pp"
   }
 }
