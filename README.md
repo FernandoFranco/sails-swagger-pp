@@ -3,9 +3,9 @@
 # sails-swagger-pp
 
 [![NPM version][npm-image]][npm-url]
-[![Build status][ci-image]][ci-url]
-[![Dependency Status][daviddm-image]][daviddm-url]
-[![Code Climate][codeclimate-image]][codeclimate-url]
+<!--[![Build status][ci-image]][ci-url]-->
+<!--[![Dependency Status][daviddm-image]][daviddm-url]-->
+<!--[![Code Climate][codeclimate-image]][codeclimate-url]-->
 
 Just a customized fork of this one: [https://github.com/langateam/sails-swagger](https://github.com/langateam/sails-swagger)
 
