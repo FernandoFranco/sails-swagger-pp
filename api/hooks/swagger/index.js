@@ -31,7 +31,7 @@ class Swagger extends Marlinspike {
   }
 
   initialize (next) {
-    let hook = this.sails.hooks.swagger
+    let hook = this.sails.hooks['swagger-pp']
     this.sails.after('lifted', () => {
       hook.doc = xfmr.getSwagger(this.sails, this.sails.config.swagger.pkg)
     })

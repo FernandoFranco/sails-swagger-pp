@@ -1,6 +1,6 @@
 const SwaggerController = {
     doc(req, res) {
-        res.status(200).jsonx(sails.hooks.swagger.doc)
+        res.status(200).jsonx(sails.hooks['swagger-pp'].doc)
     },
 
     ui (req, res) {
