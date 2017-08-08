@@ -1,4 +1,8 @@
 const SwaggerController = {
+    $swagger: {
+        ignore: true
+    },
+
     doc(req, res) {
         res.status(200).jsonx(sails.hooks['swagger-pp'].doc)
     },

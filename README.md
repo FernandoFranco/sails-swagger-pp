@@ -26,14 +26,79 @@ module.exports.swagger = {
   ui: {
     url: 'http://swagger.balderdash.io'
   },
-  // Optional - Override swagger doc attributes
+  // Optional - Merge swagger doc attributes
   doc: {
     basePath: '/api',
     host: 'http://localhost',
     info: {
-      title: 'My API'
+      title: 'My API',
+      contact: {
+        name: "Your Name",
+        email: "your.email@support.com"
+      }
+    },
+    securityDefinitions: {
+      bearer: {
+        in: 'header',
+        type: 'apiKey',
+        name: 'Authorization'
+      }
+    },
+    schemes: [
+        'http'
+    ],
+    definitions: {
+      login: {
+        properties: {
+          email: {
+            format: 'string',
+            type: 'string'
+          },
+          password: {
+            format: 'string',
+            type: 'string'
+          }
+        },
+        type: "object"
+      },
+      token: {
+        properties: {
+          token: {
+            format: 'string',
+            type: 'string'
+          }
+        },
+        type: "object"
+      }
     }
   }
+};
+```
+
+## Ignore Model in Swagger Definitions
+```js
+/**
+ * Log.js
+ *
+ * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
+ */
+module.exports = {
+  swagger: { ignore: true },
+  attributes: { }
+};
+```
+
+## Ignore Controller in Swagger Tags
+```js
+/**
+ * LogController
+ *
+ * @description :: Server-side logic for managing Logs
+ * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ */
+module.exports = {
+    $swagger: { ignore: true }
 };
 ```
 
@@ -91,18 +156,21 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
    
-    '* /swagger/ui': {
-        swagger: {
-            ignore: true
-        }
-    },
+    '* /swagger/doc': { swagger: { ignore: true } },
+    '* /swagger/ui': { swagger: { ignore: true } },
 
     'post /api/auth': {
         controller: 'AuthController',
         action: 'signIn',
         swagger: {
             summary: 'Login',
-            description: 'Login in the API'
+            description: 'Login in the API',
+             parameters: [
+                { in: 'body', name: 'body', required: true, schema: { $ref: '#/definitions/login' } }
+            ],
+            responses: {
+                200: { description: 'Authorization token', schema: { $ref: '#/definitions/token' } }
+            }
         }
     },
 }
